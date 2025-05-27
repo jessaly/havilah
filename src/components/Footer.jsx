@@ -33,9 +33,9 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-2">Worship Times</h3>
             <ul className="space-y-1">
-              <li>Sun: 9:00 AM</li>
-              <li>Wed: 6:30 PM</li>
-              <li>Fri: 7:00 PM</li>
+              <li>..........</li>
+              <li>..........</li>
+              <li>..........</li>
             </ul>
           </div>
 

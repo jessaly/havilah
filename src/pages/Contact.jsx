@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaFacebookF, FaInstagram, FaYoutube } from 'react-icons/fa';
+import {
+  FaMapMarkerAlt,
+  FaPhoneAlt,
+  FaEnvelope,
+  FaFacebookF,
+  FaInstagram,
+  FaYoutube,
+} from 'react-icons/fa';
 
 const ContactUs = () => {
   const [form, setForm] = useState({
@@ -11,105 +18,153 @@ const ContactUs = () => {
     message: '',
   });
 
+  const [submitted, setSubmitted] = useState(false);
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // TODO: Handle form submission (email or API)
-    alert('Message sent!');
+    setSubmitted(true);
     setForm({ name: '', email: '', subject: '', message: '' });
   };
 
   return (
-    <div>
+    <div className="font-sans text-gray-800">
       <Navbar />
 
-      {/* Hero */}
-      <section className="w-full h-64 bg-[url('https://source.unsplash.com/1600x400/?church')] bg-cover bg-center flex items-center justify-center">
-        <h1 className="text-5xl font-bold text-white bg-black/50 px-6 py-3 rounded">Contact Us</h1>
+       {/* Hero Section */}
+      <section className="pt-28 bg-[#740798] text-white text-center">
+        <div className="container mx-auto px-4 py-16">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-wide">Contact Us</h1>
+         
+        </div>
       </section>
 
-      {/* Main Section */}
-      <section className="max-w-7xl mx-auto py-16 px-6 grid md:grid-cols-2 gap-10">
-        {/* Contact Info */}
-        <div className="space-y-6">
-          <h2 className="text-3xl font-bold text-[#740798]">Get In Touch</h2>
-          <p className="text-gray-700">We’d love to hear from you! Reach out with any questions, prayer requests, or visit us in person.</p>
+      {/* Breadcrumb */}
+      <div className="bg-amber-400 text-white py-2 px-4 text-sm md:text-base">
+        <div className="container mx-auto">
+          Royal Chapel &gt; <span className="font-semibold">Contact</span>
+        </div>
+      </div>
 
-          <div className="space-y-4">
-            <div className="flex items-center gap-4 text-gray-800">
-              <FaMapMarkerAlt className="text-[#740798]" />
-              <span>Royal Chapel, Accra, Ghana</span>
+      {/* Main Section */}
+      <section className="max-w-7xl mx-auto py-20 px-6 grid lg:grid-cols-2 gap-16 items-start">
+        {/* Contact Info */}
+        <div className="space-y-8">
+          <h2 className="text-4xl font-bold text-[#740798]">Get In Touch</h2>
+          <p className="text-lg text-gray-600 leading-relaxed">
+            We’d love to hear from you! Reach out with any questions, prayer requests, or visit us in person.
+          </p>
+
+          <div className="space-y-5">
+            <div className="flex items-center gap-4 text-gray-700 text-lg">
+              <FaMapMarkerAlt className="text-[#740798] text-xl" />
+              <span>Royal Chapel, Kumasi, Ghana</span>
             </div>
-            <div className="flex items-center gap-4 text-gray-800">
-              <FaPhoneAlt className="text-[#740798]" />
+            <div className="flex items-center gap-4 text-gray-700 text-lg">
+              <FaPhoneAlt className="text-[#740798] text-xl" />
               <span>+233 26 777 1616</span>
             </div>
-            <div className="flex items-center gap-4 text-gray-800">
-              <FaEnvelope className="text-[#740798]" />
+            <div className="flex items-center gap-4 text-gray-700 text-lg">
+              <FaEnvelope className="text-[#740798] text-xl" />
               <span>info@royalchapel.org</span>
             </div>
           </div>
 
-          {/* Socials */}
-          <div className="flex gap-4 mt-6 text-xl text-[#740798]">
-            <a href="#"><FaFacebookF /></a>
-            <a href="#"><FaInstagram /></a>
-            <a href="#"><FaYoutube /></a>
+          {/* Social Icons */}
+          <div className="flex gap-5 mt-6 text-[#740798] text-2xl">
+            <a href="#" className="hover:text-amber-400 transition"><FaFacebookF /></a>
+            <a href="#" className="hover:text-amber-400 transition"><FaInstagram /></a>
+            <a href="#" className="hover:text-amber-400 transition"><FaYoutube /></a>
           </div>
         </div>
 
         {/* Contact Form */}
-        <form onSubmit={handleSubmit} className="bg-white p-8 shadow-md rounded-lg space-y-6">
-          <h3 className="text-2xl font-semibold text-[#740798]">Send Us a Message</h3>
+        <form
+          onSubmit={handleSubmit}
+          className="w-full max-w-xl bg-white p-10 rounded-2xl shadow-lg space-y-6 border border-gray-100 mx-auto"
+        >
+          <h3 className="text-3xl font-semibold text-[#740798] mb-2">Send Us a Message</h3>
 
-          <input
-            type="text"
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            placeholder="Full Name"
-            required
-            className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-[#740798]"
-          />
+          <div className="space-y-4">
+            <div>
+              <label htmlFor="name" className="text-sm font-medium text-gray-700">
+                Full Name <span className="text-red-500">*</span>
+              </label>
+              <input
+                id="name"
+                type="text"
+                name="name"
+                value={form.name}
+                onChange={handleChange}
+                required
+                placeholder="Your full name"
+                className="w-full mt-1 p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#740798] transition"
+              />
+            </div>
 
-          <input
-            type="email"
-            name="email"
-            value={form.email}
-            onChange={handleChange}
-            placeholder="Email Address"
-            required
-            className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-[#740798]"
-          />
+            <div>
+              <label htmlFor="email" className="text-sm font-medium text-gray-700">
+                Email Address <span className="text-red-500">*</span>
+              </label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+                required
+                placeholder="Your email address"
+                className="w-full mt-1 p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#740798] transition"
+              />
+            </div>
 
-          <input
-            type="text"
-            name="subject"
-            value={form.subject}
-            onChange={handleChange}
-            placeholder="Subject"
-            className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-[#740798]"
-          />
+            <div>
+              <label htmlFor="subject" className="text-sm font-medium text-gray-700">
+                Subject
+              </label>
+              <input
+                id="subject"
+                type="text"
+                name="subject"
+                value={form.subject}
+                onChange={handleChange}
+                placeholder="Subject (optional)"
+                className="w-full mt-1 p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#740798] transition"
+              />
+            </div>
 
-          <textarea
-            name="message"
-            rows="5"
-            value={form.message}
-            onChange={handleChange}
-            placeholder="Your Message"
-            required
-            className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-[#740798]"
-          ></textarea>
+            <div>
+              <label htmlFor="message" className="text-sm font-medium text-gray-700">
+                Message <span className="text-red-500">*</span>
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                value={form.message}
+                onChange={handleChange}
+                required
+                placeholder="Your message"
+                className="w-full mt-1 p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#740798] transition"
+              ></textarea>
+            </div>
+          </div>
 
           <button
             type="submit"
-            className="bg-[#740798] hover:bg-[#5a066c] text-white py-3 px-6 rounded font-semibold transition-colors"
+            className="w-full bg-[#740798] hover:bg-[#5a066c] text-white py-3 px-6 rounded-lg font-semibold transition-colors shadow-md"
           >
             Send Message
           </button>
+
+          {submitted && (
+            <p className="text-green-600 text-sm mt-2 transition-opacity duration-500 ease-in-out">
+              Your message has been sent successfully!
+            </p>
+          )}
         </form>
       </section>
 

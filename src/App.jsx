@@ -7,6 +7,7 @@ import Contact from './pages/Contact'
 import About from './pages/About'
 import Media from './pages/Media'
 import Ministries from './pages/Ministries'
+import Feedback from './pages/Feedback'
 
 function App() {
 
@@ -20,6 +21,8 @@ function App() {
         <Route path='/contact' element = {<Contact />} />
         <Route path='/media' element = {<Media />} />
         <Route path='/min' element = {<Ministries />} />
+        <Route path='/feed' element = {<Feedback />} />
+
         
        </Routes>
        </BrowserRouter> 
