@@ -1,79 +1,169 @@
-import React from "react";
-import Navbar from "../components/Navbar";
+import React, { useState, useEffect, useRef } from "react";
+import { Menu, X, ChevronDown } from "lucide-react";
+import logoImg from "../assets/images/logo.jpg";
 
-const Contact = () => {
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [showContactDropdown, setShowContactDropdown] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+    setShowContactDropdown(false);
+  };
+
+  const toggleContactDropdown = () => {
+    setShowContactDropdown((prev) => !prev);
+  };
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target)
+      ) {
+        setShowContactDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const navLinks = [
+    { label: "Home", href: "/" },
+    { label: "About Us", href: "/about" },
+    { label: "Media", href: "/media" },
+    { label: "Ministries", href: "/ministries" },
+  ];
+
+  const contactLinks = [
+    { label: "Inquiry / Feedback", href: "/feed" },
+    { label: "Contact Us", href: "/contact" },
+  ];
+
   return (
-    <>
-      <Navbar />
-
-      <section className="pt-36 pb-20 px-4 sm:px-8 bg-gradient-to-br from-purple-50 via-white to-amber-50 min-h-screen">
-        <div className="max-w-4xl mx-auto bg-white p-8 sm:p-12 rounded-3xl shadow-2xl border border-gray-100">
-          <div className="text-center mb-10">
-            <h2 className="text-4xl font-bold text-[#740798]">Contact Us</h2>
-            <p className="text-gray-600 mt-2">
-              We’d love to hear from you! Fill out the form below and we’ll get back to you shortly.
-            </p>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-xl px-6 py-4 backdrop-blur-lg">
+      <div className="flex items-center justify-between max-w-7xl mx-auto">
+        {/* Logo */}
+        <a
+          href="/"
+          className="flex items-center space-x-2"
+          aria-label="Go to homepage"
+        >
+          <img
+            src={logoImg}
+            alt="Royal Chapel Logo"
+            className="h-20 w-auto object-contain"
+          />
+          <div className="text-sm leading-tight hidden sm:block">
+            <p className="text-gray-800 font-semibold">Havilah Royal</p>
+            <p className="text-gray-800 font-semibold">Community Church</p>
+            <hr className="my-1 border-gray-400" />
+            <p className="text-gray-800 font-semibold">The Royal Chapel</p>
           </div>
+        </a>
 
-          <form className="space-y-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  placeholder="Your name"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#740798]"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  placeholder="you@example.com"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#740798]"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Subject
-              </label>
-              <input
-                type="text"
-                placeholder="Subject"
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#740798]"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Message
-              </label>
-              <textarea
-                rows="5"
-                placeholder="Write your message..."
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#740798]"
-              ></textarea>
-            </div>
-
-            <div className="text-center">
-              <button
-                type="submit"
-                className="bg-[#740798] hover:bg-amber-400 text-white hover:text-black font-bold py-3 px-8 rounded-full transition duration-300 shadow-md"
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex space-x-6 text-sm font-bold tracking-widest text-black uppercase items-center relative">
+          {navLinks.map((link) => (
+            <li key={link.label}>
+              <a
+                href={link.href}
+                className="hover:text-amber-500 transition-colors duration-200"
               >
-                Send Message
-              </button>
-            </div>
-          </form>
+                {link.label}
+              </a>
+            </li>
+          ))}
+
+          {/* CONTACT US Dropdown */}
+          <li className="relative" ref={dropdownRef}>
+            <button
+              onClick={toggleContactDropdown}
+              className="flex items-center gap-1 hover:text-amber-500 transition-colors"
+              aria-haspopup="true"
+              aria-expanded={showContactDropdown}
+            >
+              CONTACT US <ChevronDown className="w-4 h-4" />
+            </button>
+
+            {showContactDropdown && (
+              <ul
+                className="absolute right-0 mt-3 w-52 bg-white rounded-xl shadow-xl z-50 overflow-hidden border border-gray-200 animate-fade-in"
+              >
+                {contactLinks.map((item) => (
+                  <li key={item.href}>
+                    <a
+                      href={item.href}
+                      className="block px-4 py-2 hover:bg-amber-100 transition-colors"
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        </ul>
+
+        {/* Mobile Hamburger */}
+        <div className="md:hidden">
+          <button
+            onClick={toggleMenu}
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
+          >
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
-      </section>
-    </>
+      </div>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <ul
+          id="mobile-menu"
+          className="md:hidden mt-4 flex flex-col space-y-4 text-sm font-bold tracking-widest text-black uppercase px-2 pb-4"
+        >
+          {navLinks.map((link) => (
+            <li key={link.label}>
+              <a
+                href={link.href}
+                className="hover:text-amber-500"
+                onClick={() => setIsOpen(false)}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+          <li>
+            <button
+              onClick={toggleContactDropdown}
+              className="flex items-center gap-1"
+            >
+              CONTACT US <ChevronDown className="w-4 h-4" />
+            </button>
+            {showContactDropdown && (
+              <ul className="mt-2 ml-4 space-y-2 text-sm">
+                {contactLinks.map((item) => (
+                  <li key={item.href}>
+                    <a
+                      href={item.href}
+                      className="block hover:text-amber-500"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        </ul>
+      )}
+    </nav>
   );
 };
 
-export default Contact;
+export default Navbar;

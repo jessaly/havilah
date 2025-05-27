@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
@@ -20,6 +20,7 @@ function App() {
         <Route path='/contact' element = {<Contact />} />
         <Route path='/media' element = {<Media />} />
         <Route path='/min' element = {<Ministries />} />
+        <Route path="*" element={<div>404 Not Found</div>} />
        </Routes>
        </BrowserRouter> 
     </div>
