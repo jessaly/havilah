@@ -1,5 +1,3 @@
-// src/pages/Home.jsx
-
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -12,9 +10,18 @@ import {
   FaYoutube,
 } from 'react-icons/fa';
 import logoImg from '../assets/images/logo.jpg';
+import prayerImg from '../assets/images/prayer.png'; // import the prayer image for bg
+import Footer from '../components/Footer';
 
 const Home = () => {
-  const colors = ['bg-red-500', 'bg-blue-500', 'bg-green-500', 'bg-yellow-500', 'bg-purple-600'];
+  // Use imported image URLs directly, no mixing strings and imports
+  const images = [
+    logoImg, // imported image URL string
+    'https://source.unsplash.com/random/1200x600?church,2',
+    'https://source.unsplash.com/random/1200x600?church,3',
+    'https://source.unsplash.com/random/1200x600?church,4',
+    'https://source.unsplash.com/random/1200x600?church,5',
+  ];
 
   const events = [
     { id: 1, bgColor: "bg-purple-700", title: "Prayer & Praise Night", description: "A powerful evening of worship and intercession." },
@@ -60,12 +67,21 @@ const Home = () => {
           loop={true}
           className="w-full h-full"
         >
-          {colors.map((color, index) => (
+          {images.map((src, index) => (
             <SwiperSlide key={index}>
+              {/* Use inline style for backgroundImage with url(src) */}
               <div
-                className={`w-full h-full flex items-center justify-center text-white text-4xl font-bold ${color}`}
+                className="w-full h-full flex items-center justify-center text-white text-4xl font-bold relative"
+                style={{
+                  backgroundImage: `url(${src})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
               >
-                Slide {index + 1}
+                {/* Semi-transparent overlay for readability */}
+                <div className="bg-black bg-opacity-50 w-full h-full flex items-center justify-center">
+                  Slide {index + 1}
+                </div>
               </div>
             </SwiperSlide>
           ))}
@@ -139,8 +155,16 @@ const Home = () => {
       </section>
 
       {/* Request Prayer Section */}
-      <section className="relative w-full text-white py-20">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 px-6 z-10 relative">
+      <section
+        className="relative w-full text-white py-20"
+        style={{
+          backgroundImage: `url(${prayerImg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 px-6 z-10 relative backdrop-blur-sm bg-white/10 rounded-lg p-10">
+
           {/* Title */}
           <div className="flex items-center">
             <h2 className="text-4xl md:text-5xl font-bold tracking-widest leading-tight">
@@ -161,6 +185,7 @@ const Home = () => {
                 onChange={handleChange}
                 placeholder="Your full name"
                 className="w-full p-3 rounded border border-white bg-white/10 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                required
               />
             </div>
 
@@ -175,6 +200,7 @@ const Home = () => {
                 onChange={handleChange}
                 placeholder="Your contact number"
                 className="w-full p-3 rounded border border-white bg-white/10 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                required
               />
             </div>
 
@@ -189,6 +215,7 @@ const Home = () => {
                 onChange={handleChange}
                 placeholder="Write your prayer request here..."
                 className="w-full p-3 rounded border border-white bg-white/10 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                required
               ></textarea>
             </div>
 
@@ -200,12 +227,8 @@ const Home = () => {
             </button>
           </form>
         </div>
-
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 z-0 bg-black/70 bg-[url('assets/images/prayer.png')] bg-cover bg-center"
-        />
       </section>
+      <Footer />
     </div>
   );
 };
