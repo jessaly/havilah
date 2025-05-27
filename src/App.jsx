@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router'
 import './App.css'
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
