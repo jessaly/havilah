@@ -20,7 +20,7 @@ function App() {
         <Route path='/contact' element = {<Contact />} />
         <Route path='/media' element = {<Media />} />
         <Route path='/min' element = {<Ministries />} />
-        <Route path="*" element={<div>404 Not Found</div>} />
+        
        </Routes>
        </BrowserRouter> 
     </div>
