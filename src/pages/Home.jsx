@@ -12,7 +12,7 @@ import {
 
 
 import prayerImg from '../assets/images/prayer.png';
-import welcomeImg from '../assets/images/welcome1.jpg';
+import welcomeImg from '../assets/images/welcome1.JPG';
 import Footer from '../components/Footer';
 import secondImg from '../assets/images/home2.jpg';
 import thirdImg from '../assets/images/home3.jpg';
