@@ -9,19 +9,18 @@ import {
   FaTwitter,
   FaYoutube,
 } from 'react-icons/fa';
-import logoImg from '../assets/images/logo.jpg';
-import prayerImg from '../assets/images/prayer.png'; // import the prayer image for bg
+
+
+import prayerImg from '../assets/images/prayer.png';
+import welcomeImg from '../assets/images/welcome1.jpg';
 import Footer from '../components/Footer';
+import secondImg from '../assets/images/home2.jpg';
+import thirdImg from '../assets/images/home3.jpg';
+import fourthImg from '../assets/images/home4.jpg';
+import fifthImg from '../assets/images/home5.jpg';
 
 const Home = () => {
-  // Use imported image URLs directly, no mixing strings and imports
-  const images = [
-    logoImg, // imported image URL string
-    'https://source.unsplash.com/random/1200x600?church,2',
-    'https://source.unsplash.com/random/1200x600?church,3',
-    'https://source.unsplash.com/random/1200x600?church,4',
-    'https://source.unsplash.com/random/1200x600?church,5',
-  ];
+  const images = [secondImg, thirdImg, fourthImg, fifthImg];
 
   const events = [
     { id: 1, bgColor: "bg-purple-700", title: "Prayer & Praise Night", description: "A powerful evening of worship and intercession." },
@@ -32,7 +31,6 @@ const Home = () => {
     { id: 6, bgColor: "bg-blue-900", title: "Bible Study", description: "Dig deeper every Wednesday at 6:30pm." },
   ];
 
-  // Form state for Request Prayer
   const [form, setForm] = useState({
     name: '',
     phone: '',
@@ -45,12 +43,9 @@ const Home = () => {
 
   const handleWhatsAppSend = (e) => {
     e.preventDefault();
-
     const { name, phone, request } = form;
     const message = `Hello, I would like to request prayer:\n\nName: ${name}\nPhone: ${phone}\nPrayer Request: ${request}`;
     const encodedMessage = encodeURIComponent(message);
-
-    // Replace with your church WhatsApp number
     const whatsappNumber = '233267771616';
     window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
   };
@@ -59,8 +54,9 @@ const Home = () => {
     <div>
       <Navbar />
 
+      
       {/* Hero Slider */}
-      <div className="w-full h-screen">
+      <div className="w-full h-[750px]">
         <Swiper
           modules={[Autoplay]}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
@@ -69,29 +65,23 @@ const Home = () => {
         >
           {images.map((src, index) => (
             <SwiperSlide key={index}>
-              {/* Use inline style for backgroundImage with url(src) */}
-              <div
-                className="w-full h-full flex items-center justify-center text-white text-4xl font-bold relative"
-                style={{
-                  backgroundImage: `url(${src})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
-              >
-                {/* Semi-transparent overlay for readability */}
-                <div className="bg-black bg-opacity-50 w-full h-full flex items-center justify-center">
-                  Slide {index + 1}
-                </div>
+              <div className="w-full h-full overflow-hidden">
+                <img
+                  src={src}
+                  alt={`Slide ${index + 1}`}
+                  className="w-full h-full object-cover object-top"
+                />
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
 
+
       {/* Welcome Section */}
       <section className="w-full bg-gray-100 py-16 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
-          {/* Left side */}
+          {/* Left */}
           <div className="md:w-1/2 text-center md:text-left">
             <h2 className="text-4xl md:text-5xl font-semibold text-[#740798] mb-6 leading-snug">
               Welcome to <br /> The Royal Chapel
@@ -100,30 +90,19 @@ const Home = () => {
               A place of transformation, growth, and spiritual empowerment. <br />
               Join us in worship and experience the presence of God in a real and refreshing way.
             </p>
-
             <p className="text-amber-400 font-semibold text-lg mb-4">– Apostle Ebenezer Ohene Adasi</p>
-
-            {/* Social Icons */}
             <div className="flex items-center justify-center md:justify-start gap-6 text-2xl text-gray-700">
-              <a href="#" className="text-[#1877F2] hover:scale-110 transition-transform">
-                <FaFacebookF />
-              </a>
-              <a href="#" className="text-[#E1306C] hover:scale-110 transition-transform">
-                <FaInstagram />
-              </a>
-              <a href="#" className="text-[#1DA1F2] hover:scale-110 transition-transform">
-                <FaTwitter />
-              </a>
-              <a href="#" className="text-[#FF0000] hover:scale-110 transition-transform">
-                <FaYoutube />
-              </a>
+              <a href="#" className="text-[#1877F2] hover:scale-110 transition-transform"><FaFacebookF /></a>
+              <a href="#" className="text-[#E1306C] hover:scale-110 transition-transform"><FaInstagram /></a>
+              <a href="#" className="text-[#1DA1F2] hover:scale-110 transition-transform"><FaTwitter /></a>
+              <a href="#" className="text-[#FF0000] hover:scale-110 transition-transform"><FaYoutube /></a>
             </div>
           </div>
 
-          {/* Image */}
+          {/* Right */}
           <div className="md:w-1/2">
             <img
-              src={logoImg}
+              src={welcomeImg}
               alt="Welcome"
               className="w-full max-w-md mx-auto rounded-xl shadow-md object-cover"
             />
@@ -131,7 +110,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Upcoming Events Section */}
+      {/* Upcoming Events */}
       <section className="w-full bg-white py-16 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
@@ -154,7 +133,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Request Prayer Section */}
+      {/* Request Prayer */}
       <section
         className="relative w-full text-white py-20"
         style={{
@@ -163,16 +142,13 @@ const Home = () => {
           backgroundPosition: 'center',
         }}
       >
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 px-6 z-10 relative backdrop-blur-sm bg-white/10 rounded-lg p-10">
-
-          {/* Title */}
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 px-6 z-10 relative backdrop-blur-sm bg-white/10 rounded-lg p-10">
           <div className="flex items-center">
             <h2 className="text-4xl md:text-5xl font-bold tracking-widest leading-tight">
               REQUEST PRAYER
             </h2>
           </div>
 
-          {/* Form */}
           <form className="space-y-6 w-full" onSubmit={handleWhatsAppSend}>
             <div>
               <label htmlFor="name" className="block mb-2 text-sm font-medium text-white">
@@ -228,6 +204,7 @@ const Home = () => {
           </form>
         </div>
       </section>
+
       <Footer />
     </div>
   );
