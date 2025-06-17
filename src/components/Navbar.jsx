@@ -4,19 +4,20 @@ import logoImg from "../assets/images/logo.jpg";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [showContactDropdown, setShowContactDropdown] = useState(false);
+  const [showContactDropdown, setShowContactDropdown] = useState(false); // Desktop
+  const [showMobileContactDropdown, setShowMobileContactDropdown] = useState(false); // Mobile
   const dropdownRef = useRef(null);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
     setShowContactDropdown(false);
+    setShowMobileContactDropdown(false);
   };
 
   const toggleContactDropdown = () => {
     setShowContactDropdown((prev) => !prev);
   };
 
-  // Close dropdown on outside click
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -77,7 +78,7 @@ const Navbar = () => {
             </li>
           ))}
 
-          {/* CONTACT US Dropdown */}
+          {/* CONTACT US Dropdown (Desktop) */}
           <li className="relative" ref={dropdownRef}>
             <button
               onClick={toggleContactDropdown}
@@ -89,9 +90,7 @@ const Navbar = () => {
             </button>
 
             {showContactDropdown && (
-              <ul
-                className="absolute right-0 mt-3 w-52 bg-white rounded-xl shadow-xl z-50 overflow-hidden border border-gray-200 animate-fade-in"
-              >
+              <ul className="absolute right-0 mt-3 w-52 bg-white rounded-xl shadow-xl z-50 overflow-hidden border border-gray-200 animate-fade-in">
                 {contactLinks.map((item) => (
                   <li key={item.href}>
                     <a
@@ -139,19 +138,24 @@ const Navbar = () => {
           ))}
           <li>
             <button
-              onClick={toggleContactDropdown}
+              onClick={() =>
+                setShowMobileContactDropdown((prev) => !prev)
+              }
               className="flex items-center gap-1"
             >
               CONTACT US <ChevronDown className="w-4 h-4" />
             </button>
-            {showContactDropdown && (
+            {showMobileContactDropdown && (
               <ul className="mt-2 ml-4 space-y-2 text-sm">
                 {contactLinks.map((item) => (
                   <li key={item.href}>
                     <a
                       href={item.href}
                       className="block hover:text-amber-500"
-                      onClick={() => setIsOpen(false)}
+                      onClick={() => {
+                        setIsOpen(false);
+                        setShowMobileContactDropdown(false);
+                      }}
                     >
                       {item.label}
                     </a>
