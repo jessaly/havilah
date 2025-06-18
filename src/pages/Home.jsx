@@ -3,8 +3,8 @@ import Navbar from '../components/Navbar';
 import {
   FaFacebookF,
   FaInstagram,
-  FaTwitter,
-  FaYoutube,
+  FaTiktok,
+
 } from 'react-icons/fa';
 
 import prayerImg from '../assets/images/prayer.png';
@@ -148,10 +148,9 @@ const Home = () => {
             </p>
             <p className="text-amber-400 font-semibold text-lg mb-4">– Apostle Ebenezer Ohene Adasi</p>
             <div className="flex items-center justify-center md:justify-start gap-6 text-2xl text-gray-700">
-              <a href="#" className="text-[#1877F2] hover:scale-110 transition-transform"><FaFacebookF /></a>
-              <a href="#" className="text-[#E1306C] hover:scale-110 transition-transform"><FaInstagram /></a>
-              <a href="#" className="text-[#1DA1F2] hover:scale-110 transition-transform"><FaTwitter /></a>
-              <a href="#" className="text-[#FF0000] hover:scale-110 transition-transform"><FaYoutube /></a>
+              <a href="https://www.facebook.com/profile.php?id=100080995673061" className="text-[#1877F2] hover:scale-110 transition-transform"><FaFacebookF /></a>
+              <a href="https://www.instagram.com/ohene_adasi/" className="text-[#E1306C] hover:scale-110 transition-transform"><FaInstagram /></a>
+              <a href="https://www.tiktok.com/@havilahroyal" className="text-black hover:scale-110 transition-transform"><FaTiktok /></a>
             </div>
           </div>
 

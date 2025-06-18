@@ -194,9 +194,9 @@ const Feedback = () => {
                     LOCATION
                   </h3>
                   <div className="text-gray-600 leading-relaxed">
-                    <p>........</p>
-                    <p>.......</p>
-                    <p>.......</p>
+                    <p>Kings Hall, Moro Market</p>
+                    <p>Tafo Nhyiaeso</p>
+                    
                   </div>
                 </div>
 
@@ -206,21 +206,19 @@ const Feedback = () => {
                     PHONE NUMBERS
                   </h3>
                   <div className="text-gray-600 space-y-1">
-                    <p>.......</p>
-                    <p>.......</p>
-                    <p>........</p>
+                    <p>+233 (0) 23 313 1777</p>
+                    <p>+233 (0) 32 200 7746</p>
+                    
                   </div>
                 </div>
 
                 {/* Emails */}
                 <div>
                   <h3 className="text-[#740798] font-semibold text-sm uppercase tracking-wide mb-3">
-                    EMAILS
+                    EMAIL
                   </h3>
                   <div className="text-gray-600 space-y-1">
-                    <p>...........</p>
-                    <p>...........</p>
-                    <p>............</p>
+                    <p>havilahroyalcommunity@gmail.com</p>
                   </div>
                 </div>
 

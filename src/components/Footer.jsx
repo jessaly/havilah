@@ -2,7 +2,7 @@ import React from 'react';
 import {
   FaFacebookF,
   FaInstagram,
-  FaTwitter,
+  FaTiktok,
   FaYoutube,
 } from 'react-icons/fa';
 
@@ -33,9 +33,8 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-2">Worship Times</h3>
             <ul className="space-y-1">
-              <li>..........</li>
-              <li>..........</li>
-              <li>..........</li>
+              <li>Saturdays: 8AM to 10:30AM</li>
+              <li>Wednesdays: 6PM to 8:30PM</li>
             </ul>
           </div>
 
@@ -43,10 +42,10 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-2">Follow Us</h3>
             <div className="flex gap-3 text-gray-500 text-lg">
-              <a href="#" className="hover:text-blue-600"><FaFacebookF /></a>
-              <a href="#" className="hover:text-pink-500"><FaInstagram /></a>
-              <a href="#" className="hover:text-blue-400"><FaTwitter /></a>
-              <a href="#" className="hover:text-red-600"><FaYoutube /></a>
+              <a href="https://www.facebook.com/profile.php?id=61575177340157" target='_blank' className="hover:text-blue-600"><FaFacebookF /></a>
+              <a href="https://www.instagram.com/havilahroyal/"  target='_blank' className="hover:text-pink-500"><FaInstagram /></a>
+              <a href="https://www.tiktok.com/@havilahroyal" target='_blank' className="hover:text-black-400"><FaTiktok /></a>
+              <a href="https://www.youtube.com/@havilahroyal" target='_blank' className="hover:text-red-600"><FaYoutube /></a>
             </div>
           </div>
         </div>

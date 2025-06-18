@@ -8,6 +8,8 @@ import {
   FaFacebookF,
   FaInstagram,
   FaYoutube,
+  FaTiktok,
+  FaWhatsapp,
 } from 'react-icons/fa';
 
 const ContactUs = () => {
@@ -61,23 +63,26 @@ const ContactUs = () => {
           <div className="space-y-5">
             <div className="flex items-center gap-4 text-gray-700 text-lg">
               <FaMapMarkerAlt className="text-[#740798] text-xl" />
-              <span>Royal Chapel, Kumasi, Ghana</span>
+              <span>Kings Hall, Moro Market, Tafo Nhyiaeso</span>
             </div>
             <div className="flex items-center gap-4 text-gray-700 text-lg">
               <FaPhoneAlt className="text-[#740798] text-xl" />
-              <span>+233 26 777 1616</span>
+              <span>+233 (0) 23 313 1777 </span>
+              <span>+233 (0)32 200 7746</span>
             </div>
             <div className="flex items-center gap-4 text-gray-700 text-lg">
               <FaEnvelope className="text-[#740798] text-xl" />
-              <span>info@royalchapel.org</span>
+              <span>havilahroyalcommunity@gmail.com</span>
             </div>
           </div>
 
           {/* Social Icons */}
           <div className="flex gap-5 mt-6 text-[#740798] text-2xl">
-            <a href="#" className="hover:text-amber-400 transition"><FaFacebookF /></a>
-            <a href="#" className="hover:text-amber-400 transition"><FaInstagram /></a>
-            <a href="#" className="hover:text-amber-400 transition"><FaYoutube /></a>
+            <a href="https://www.facebook.com/profile.php?id=61575177340157" className="hover:text-amber-400 transition"><FaFacebookF /></a>
+            <a href="https://www.instagram.com/havilahroyal/" className= "hover:text-amber-400 transition"><FaInstagram /></a>
+            <a href="https://www.youtube.com/@havilahroyal" className="hover:text-amber-400 transition"><FaYoutube /></a>
+            <a href="https://www.tiktok.com/@havilahroyal " className="hover:text-amber-400 transition"><FaTiktok /></a>
+            <a href="https://wa.me/233233131777" className="hover:text-amber-400 transition"><FaWhatsapp /></a>
           </div>
         </div>
 
