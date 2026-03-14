@@ -138,7 +138,7 @@ const Home = () => {
           className="h-40 w-auto mb-6"
         />
         <h1 className="text-3xl md:text-5xl font-bold text-[#740798] leading-tight">
-          Welcome to Havilah Royal Community Church
+          Welcome to <br />Havilah Royal Community Church
         </h1>
         <p className="text-gray-600 text-lg mt-4 max-w-xl">
           A place of transformation, growth, and spiritual empowerment.
