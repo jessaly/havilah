@@ -27,9 +27,9 @@ const Home = () => {
     },
     {
       id: 2,
-      title: 'Breakthrough Service',
+      title: 'Word Impact Service',
       date: 'Every Wednesday',
-      time: '6PM to 8:30PM',
+      time: '6PM to 8PM',
       location: 'Church Auditorium',
       bg: 'bg-amber-100',
       border: 'border-amber-400',
@@ -58,7 +58,7 @@ const Home = () => {
     {
       id: 5,
       title: 'Legacy Summit',
-      date: '22ND to 28TH JUNE, 2025',
+      date: 'In June',
       time: 'Will be Communicated',
       location: 'Church Auditorium',
       bg: 'bg-blue-100',
@@ -67,7 +67,7 @@ const Home = () => {
     },
     {
       id: 6,
-      title: '30 Days Of Spiritual Empowerment',
+      title: 'Awakening',
       date: 'In September',
       time: 'Will be Communicated',
       location: 'Church Auditorium',
@@ -88,10 +88,20 @@ const Home = () => {
     {
       id: 8,
       title: 'Switch Thanksgiving And Awards Night',
-      date: '31st December,2025',
+      date: '31st December',
       time: 'Will be communicated',
       location: 'Church Auditorium',
       bg: 'bg-amber-100',
+      border: 'border-amber-400',
+      text: 'text-amber-600',
+    },
+    {
+      id: 9,
+      title: 'Turning Point Service',
+      date: 'Every Sunday',
+      time: '5PM to 7PM',
+      location: 'Church Auditorium',
+      bg: 'bg-amber-200',
       border: 'border-amber-400',
       text: 'text-amber-600',
     },
@@ -169,7 +179,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-extrabold text-[#740798]">
-              Upcoming Events
+              Events Calendar
             </h2>
           </div>
 
